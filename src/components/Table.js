@@ -6,7 +6,7 @@ import Trans from './Trans'
 export default class Table extends Component {
   render(){
     let rows = this.props.transactions.map((transaction , index) => {
-      return <Trans key={index+1} transaction={transaction} update={this.props.updateTrans}/>
+      return <Trans key={index+1} transaction={transaction} delete={this.props.deleteTrans} update={this.props.updateTrans}/>
     })
     return(
       <table className="table">

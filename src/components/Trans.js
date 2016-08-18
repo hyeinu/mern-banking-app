@@ -8,6 +8,7 @@ export default class Trans extends Component {
     this.startEdit = this.startEdit.bind(this);
     this.stopEdit = this.stopEdit.bind(this);
     this.selectType = this.selectType.bind(this);
+    this.deleteTransaction = this.deleteTransaction.bind(this);
     this.changeDesc = this.changeDesc.bind(this);
     this.changeVal = this.changeVal.bind(this);
     this.saveTransaction = this.saveTransaction.bind(this);
@@ -40,7 +41,7 @@ export default class Trans extends Component {
   }
 
   deleteTransaction(id){
-    console.log('delete:', id)
+    this.props.delete(id)
   }
 
   saveTransaction(id){
