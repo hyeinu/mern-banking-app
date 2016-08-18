@@ -50,8 +50,6 @@ router.route('/:id')
   })
   .put((req, res) =>{
     Transaction.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true}, (err, transaction) =>{
-      res.status(err ? 400: 200).send(err || transaction);
-
       if(err){
         return res.status(400).send(err);
       }
