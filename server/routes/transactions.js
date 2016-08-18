@@ -23,7 +23,12 @@ router.route('/')
   })
   .post((req, res)=>{
     Transaction.create(req.body, (err, newTransaction) => {
-      res.status(err ? 400: 200).send(err || newTransaction);
+      if(err){
+        return res.status(400).send(err);
+      }
+      Transaction.find({}, (err, transactions) => {
+        res.status(err ? 400: 200).send(err || transactions);
+      })
     });
   })
 
@@ -35,7 +40,12 @@ router.route('/:id')
   })
   .delete((req, res) =>{
     Transaction.findByIdAndRemove(req.params.id, err =>{
-      res.status(err ? 400 : 200).send(err);
+      if(err){
+        return res.status(400).send(err);
+      }
+      Transaction.find({}, (err, transactions) => {
+        res.status(err ? 400: 200).send(err || transactions);
+      })
     });
   })
   .put((req, res) =>{
